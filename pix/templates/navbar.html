@@ -44,10 +44,10 @@
             <!-- Adding a search form  -->
             <div class="col-sm-4 col-md-4 navbar-right">
             
-                <form class="navbar-form" role="search" action="">
+                <form class="navbar-form" role="search" action="{% url 'search_results'%}">
             
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search category" name="photo">
+                        <input type="text" class="form-control" placeholder="Search image" name="result">
                         <div class="input-group-btn">
                             <button class="btn btn-danger" type="submit">
                                 <i class="glyphicon glyphicon-search">Submit</i>

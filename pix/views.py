@@ -60,6 +60,32 @@ def search_results(request):
     else:
         message = "Found 0 searched image"
         return render(request, 'all-photos/search.html', {"message": message}) 
+        
+
+
+def category(request, id):
+
+    '''
+
+    Method to search by images or category
+
+    '''
+
+    # categories = Category.get_all_categories()
+
+    images = Image.objects.filter(category__id=id)
+
+    context = {
+
+        "categories":categories,
+
+        "images":images
+
+    }
+
+    return render(request, 'category.html', context)
+
+
 
 def location(request,location_id):
     image =  Image.objects.filter(location_id = location_id)
