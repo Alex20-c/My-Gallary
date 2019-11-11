@@ -8,9 +8,8 @@ from .models import Image,Location,Category
 # def welcome(request):
 #     return render(request,'gallery.html')
 def gallery(request):
-    category = Category.objects.all()
-    print(category)
-    return render (request,'gallery.html')
+    photos = Image.objects.all()
+    return render (request,'gallery.html', {"photos":photos})
 
 def photos(request):
     date = dt.date.today()
