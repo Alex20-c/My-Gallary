@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/basephotos.css' %}">
     <style>
         body {
-            background-color: 10px brown; 
+            background-color: 10px; 
         }
     </style>
      {% endblock %}
@@ -24,13 +24,16 @@
 
 <body>
          {% include "navbar.html" %}
+ 
 
     {% block content %}
     <h1>Gallery {{date|date:"l d-F Y"}}</h1> 
     {%endblock%}
 
      {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> {% bootstrap_javascript %} {% endblock %}
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+         {% bootstrap_javascript %}
+         {% endblock %}
 </body>
 
 </html>
