@@ -1,0 +1,117 @@
+{% extends 'all-photos/base.html' %} 
+{% block content %} 
+{{block.super}}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+function CopyFunction() {
+  var copyText = document.getElementById("imagelink");
+  copyText.select();
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}
+</script> 
+<div style="text-align: center" class="container">
+    <style>
+        img:hover {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+        
+</style>
+</div>
+ <div class="container-fluid">
+ <!-- displaying images  -->
+    <div class="row">
+        
+    {% for photo in photos %}
+
+    <div class="col-md-3">
+        <!-- modal button -->
+         <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal{{photo.id}}"> 
+             <img src="{{photo.image.url }}" alt="" width="280" height="280">
+         </button> 
+         <br> 
+     <!-- modal -->
+   </div>
+    {% endfor %}
+</div>
+</div>
+ {% for photo in photos %} 
+ <!-- modal content  -->
+ <div class="modal fade" id="myModal{{photo.id}}" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>{{ photo.name }}</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <img src="{{photo.image.url }}" alt="" width="250" height="250">
+                <h4 class="modal-title">{{ photo.description }}</h4>
+            </div>
+
+            <div class="modal-body">
+                {% for category in photo.category.all %}
+                {% endfor %} 
+                <p>{{ category.name }}</p>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="CopyFunction()">Copy Link</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+ </div>  
+ {%endfor%}{% endblock %}  
