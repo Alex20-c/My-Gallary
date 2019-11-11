@@ -3,7 +3,7 @@
 {% for photo_item in location %}
 
 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style=padding-top:120px;>
-    <img src="{{photos_item.image.url}}" data-toggle="modal" data-target="#{{ photos_item.id}}" class="img-responsive" alt="Image"
+    <img src="{{photos_item.image_path.url}}" data-toggle="modal" data-target="#{{ photos_item.id}}" class="img-responsive" alt="Image"
         height=400px style="box-shadow:3px 3px solid chocolate; padding-bottom:20px; box-shadow:2px 3px solid chocolate;">
 </div>
 {% endfor %} {% endblock %}
