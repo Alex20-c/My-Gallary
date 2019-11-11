@@ -23,7 +23,7 @@ class Location(models.Model):
 
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='images/')
+    image_path = models.ImageField(upload_to='images/')
     name = models.CharField(max_length=50)
     description = models.TextField(max_length=60)
     category = models.ForeignKey(Category)
